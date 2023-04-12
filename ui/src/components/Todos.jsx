@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { useEffect } from "react";
 import { NewTodoInput } from "./NewTodoForm";
 import { Todo } from "./Todo";
+import { Link } from "react-router-dom";
 
 export const Todos = () => {
   const [todos, setTodos] = useState([]);
@@ -29,13 +30,16 @@ export const Todos = () => {
 
   return (
     <>
-      <h3>To Do:</h3>
+      <h3>To Do For Me:</h3>
       <div className="todos">
         {todos.map((todo) => (
           <Todo key={todo.id} todo={todo} onDeleteSuccess={onDeleteSuccess} />
         ))}
       </div>
       <NewTodoInput onCreateSuccess={onCreateSuccess} />
+      <Link to="/about" className="nav-link">
+        Learn more...
+      </Link>
     </>
   );
 };
